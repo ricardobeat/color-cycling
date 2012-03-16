@@ -31,7 +31,7 @@
       width: stage.width,
       height: stage.height - 371,
       x: 0,
-      y: 371
+      y: 380
     };
     imageData = ctx.getImageData(drawArea.x, drawArea.y, drawArea.width, drawArea.height);
     pixels = imageData.data;
@@ -47,6 +47,7 @@
       }
       mapped[i] = colorsKeyed[rgb];
     }
+    colors = [[119, 152, 152], [80, 102, 108], [100, 132, 137], [70, 96, 96], [119, 152, 162], [70, 96, 96]];
     for (i = 0, _len = colors.length; i < _len; i++) {
       color = colors[i];
       colors[i] = color.map(function(c) {
@@ -73,7 +74,8 @@
       }
       return null;
     };
-    smoothColors(3);
+    smoothColors(4);
+    colors = colors.reverse();
     lastColor = colors.length;
     frames = [];
     for (i = 0, _ref = colors.length; 0 <= _ref ? i < _ref : i > _ref; 0 <= _ref ? i++ : i--) {
@@ -89,7 +91,7 @@
       }
       frames.push(c);
     }
-    FPS = 30;
+    FPS = 24;
     currentFrame = 0;
     nframes = frames.length;
     draw = function() {

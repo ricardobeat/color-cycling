@@ -22,7 +22,7 @@ ready = ->
 		width  : stage.width
 		height : stage.height - 371
 		x      : 0
-		y      : 371
+		y      : 380
 
 	imageData = ctx.getImageData drawArea.x, drawArea.y, drawArea.width, drawArea.height
 	pixels = imageData.data
@@ -44,6 +44,14 @@ ready = ->
 		mapped[i] = colorsKeyed[rgb]
 
 	#colors = colors[8..22]
+	colors = [
+		[119,152,152]
+		[80,102,108]
+		[100,132,137]
+		[70,96,96]
+		[119,152,162]
+		[70,96,96]
+	]
 
 	# draw color pallete
 	for color, i in colors
@@ -72,7 +80,9 @@ ready = ->
 		(mapped[key] = pos*times % colors.length) for key, pos in mapped
 		return null
 
-	smoothColors 3
+	smoothColors 4
+
+	colors = colors.reverse()
 
 	lastColor = colors.length
 	frames = []
@@ -89,7 +99,7 @@ ready = ->
 		frames.push c
 
 	## Animation
-	FPS = 30
+	FPS = 24
 	currentFrame = 0
 	nframes = frames.length
 
